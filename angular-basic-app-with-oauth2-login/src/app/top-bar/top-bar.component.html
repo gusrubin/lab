@@ -1,0 +1,9 @@
+<div class="title-area">
+    <a [routerLink]="['/']">
+        <h1>{{ title }}</h1>
+    </a>
+</div>
+<div class="login-info">
+    {{claims?.name}}
+    <button (click)="handleLoginClick()">{{isLoggedIn ? '[logout]' : 'Login'}}</button>
+</div>
