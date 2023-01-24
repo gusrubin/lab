@@ -4,18 +4,37 @@ spring:
   main:
     banner-mode: off
     
-  # H2 Config
+#  # H2 Config
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+#    username: dev
+#    password: dev
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#  h2:
+#    console:
+#      enabled: true
+#      #http://localhost:{service-port}/h2-console
+      
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-    username: dev
-    password: dev
+    url: jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = ORCLPDB1)))
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: developer
+    password: developer
+    hikari:
+      keepalive-time: 10000
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
-      #http://localhost:{service-port}/h2-console
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    open-in-view: true
+    properties:
+      hibernate:
+        proc:
+          param_null_passing: true
+    show-sql: true
+  flyway:
+    enabled: false
+    baseline-on-migrate: true
     
 server:
   port: 8090
@@ -37,6 +56,6 @@ logging:
     name: logs/${spring.application.name}.log
   level:
     '[org.springframework]': info
-    '[com.zaxxer.hikari]': info
+    '[com.zaxxer.hikari]': debug
     '[org.hibernate]': info
     '[com.gusrubin.lab.springgenerallab]': info
