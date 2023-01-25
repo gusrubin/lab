@@ -58,4 +58,4 @@ logging:
     '[org.springframework]': info
     '[com.zaxxer.hikari]': debug
     '[org.hibernate]': info
-    '[com.gusrubin.lab.springgenerallab]': info
+    '[com.gusrubin.lab.springgenerallab]': debug

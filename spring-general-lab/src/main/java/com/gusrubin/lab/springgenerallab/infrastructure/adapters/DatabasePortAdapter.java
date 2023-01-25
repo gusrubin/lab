@@ -3,6 +3,8 @@
  */
 package com.gusrubin.lab.springgenerallab.infrastructure.adapters;
 
+import java.security.SecureRandom;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -34,12 +36,14 @@ public class DatabasePortAdapter implements DatabasePort {
     private static final String FREEZING_PROCEDURE_NAME = "generate_message_freezing";
     private static final String REQUEST_ID_PARAMETER = "request_id";
     private static final String MESSAGE_FROM_PROCEDURE_PARAMETER = "generated_message";
+    private final Random randomTimeout;
 
     /**
      * @param entityManager
      */
     public DatabasePortAdapter(EntityManager entityManager) {
 	this.entityManager = entityManager;
+	this.randomTimeout = new Random();
     }
 
     @Override
@@ -80,13 +84,16 @@ public class DatabasePortAdapter implements DatabasePort {
 	Future<String> future = executor.submit(callProcedureTask);
 
 	String result = null;
+	int timeout = 8;//this.randomTimeout.nextInt(20);
+	log.debug("Timeout {}", timeout);
 
 	try {
-	    result = future.get(5, TimeUnit.SECONDS);
+	    result = future.get(timeout, TimeUnit.SECONDS);
 
 	} catch (TimeoutException e) {
 	    log.error("time out exception");
 	    future.cancel(true);
+	    throw new IllegalStateException("throw time out exception");
 
 	} catch (Exception e) {
 	    log.error("other exception");

@@ -108,11 +108,17 @@ public class FreezingProtectionService implements FreezingProtectionUseCase {
 	String requestId = String.valueOf(requestIdCounter++);
 	String response = null;
 
-	if (Boolean.TRUE.equals(freezing)) {
-	    response = this.databasePort.callProcedureThatFreezes(requestId);
+	try {
+	    if (Boolean.TRUE.equals(freezing)) {
+		response = this.databasePort.callProcedureThatFreezes(requestId);
 
-	} else {
-	    response = this.databasePort.callProcedureNoFreezing(requestId);
+	    } else {
+		response = this.databasePort.callProcedureNoFreezing(requestId);
+	    }
+	    
+	} catch (Exception e) {
+	    response = "Time out na chamada da procedure";
+	    log.error("Time out na chamada da procedure");
 	}
 
 	return response;
