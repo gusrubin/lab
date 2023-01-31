@@ -4,37 +4,40 @@ spring:
   main:
     banner-mode: off
     
-#  # H2 Config
-#  datasource:
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-#    username: dev
-#    password: dev
-#  jpa:
-#    database-platform: org.hibernate.dialect.H2Dialect
-#  h2:
-#    console:
-#      enabled: true
-#      #http://localhost:{service-port}/h2-console
-      
+  # H2 Config
   datasource:
-    url: jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = ORCLPDB1)))
-    driver-class-name: oracle.jdbc.OracleDriver
-    username: developer
-    password: developer
-    hikari:
-      keepalive-time: 10000
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: dev
+    password: dev
   jpa:
-    database-platform: org.hibernate.dialect.Oracle10gDialect
-    open-in-view: true
-    properties:
-      hibernate:
-        proc:
-          param_null_passing: true
-    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      #http://localhost:{service-port}/h2-console
   flyway:
-    enabled: false
+    enabled: true
     baseline-on-migrate: true
+      
+#  datasource:
+#    url: jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = ORCLPDB1)))
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    username: developer
+#    password: developer
+#    hikari:
+#      keepalive-time: 10000
+#  jpa:
+#    database-platform: org.hibernate.dialect.Oracle10gDialect
+#    open-in-view: true
+#    properties:
+#      hibernate:
+#        proc:
+#          param_null_passing: true
+#    show-sql: true
+#  flyway:
+#    enabled: false
+#    baseline-on-migrate: true
     
 server:
   port: 8090
