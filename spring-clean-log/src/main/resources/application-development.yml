@@ -1,0 +1,47 @@
+# Profile development - Only for local environment
+spring:
+  config:
+    activate:
+      on-profile:
+      - development
+      
+#  # H2 Config
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+#    username: dev
+#    password: dev
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#  h2:
+#    console:
+#      enabled: true
+#      #http://localhost:{service-port}/h2-console
+    
+  # PostgreSQL Config
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5431/wrong_database
+    username: wrong_user
+    password: wrong_password
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    locations:
+    - db/migration
+    - development/db/migration
+    
+server:
+  port: 8081
+  error:
+    include-stacktrace: never
+    include-binding-errors: never
+    include-exception: false
+    include-message: never
+    
+logging:
+  level:
+    '[org.springframework]': info
+    '[com.gusrubin.lab.cleanlog]': debug
+    '[java.net]': off

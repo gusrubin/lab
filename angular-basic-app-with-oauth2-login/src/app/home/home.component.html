@@ -1,11 +1,28 @@
-<div>
-    <h1>Home</h1>
-    <nav>
-        <a routerLink="/public">Public Content</a>
-        <a routerLink="/user-restricted">User Restrict Content</a>
-    </nav>
-    <!-- <input name="textobusqueda" id="textobusqueda" value="Buscar..." [(ngModel)]="searchValue" (ngModelChange)="modelChanged()"> -->
-    <!-- <input type='text' name = "field1" id="field1" /> -->
-    <!-- Username -->
-    <!-- <input type='text' name = "username" id="username" /> -->
+<div>Welcome to home Route</div>
+
+<div *ngIf="isAuthenticated; else noAuth">
+  <button (click)="logout()">Logout</button>
+  <button (click)="logoffAndRevokeTokens()">Logout and revoke tokens</button>
+  <button (click)="revokeAccessToken()">Revoke access token</button>
+  <button (click)="revokeRefreshToken()">Revoke refresh token</button>
+  <button (click)="refreshSession()">Refresh session</button>
+  <hr />
+
+  <br />
+
+  Is Authenticated: {{ isAuthenticated }}
+
+  <br />
+  userData
+  <pre>{{ userData$ | async | json }}</pre>
+
+  <br />
 </div>
+
+<ng-template #noAuth>
+  <button (click)="login()">Login</button>
+  <hr />
+</ng-template>
+
+Configuration loaded:
+<pre>{{ configuration$ | async | json }}</pre>

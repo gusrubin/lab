@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { HttpHeaders } from '@angular/common/http';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-top-bar',
@@ -11,27 +12,37 @@ export class TopBarComponent implements OnInit {
 
   title = '';
 
-  constructor(private appComponent: AppComponent, private oauthService: OAuthService) {
+  constructor(private appComponent: AppComponent, 
+    private oidcSecurityService: OidcSecurityService) {
   }
 
   ngOnInit(): void {
     this.title = this.appComponent.title;
   }
 
+  getToken() {
+    const token = this.oidcSecurityService.getAccessToken().subscribe((token) => {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      };
+    });
+    console.log("token " + token);
+
+  }
+
   logout() {
-    this.oauthService.logOut();
   }
 
   get isLoggedIn() {
-    return !!this.oauthService.getIdToken();
+    return null;
   }
 
-  handleLoginClick = () => this.isLoggedIn
-    ? this.oauthService.logOut()
-    : this.oauthService.initCodeFlow();
+  handleLoginClick = () => null;
 
   get claims() {
-    let claims = this.oauthService.getIdentityClaims() as any;
+    let claims = null;
     console.log("claims=", claims);
     return claims;
   }

@@ -5,7 +5,6 @@ import { of } from 'rxjs/internal/observable/of';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { UserRestrictedInfoDto } from './user-restricted-info-dto';
-import { OAuthService } from 'angular-oauth2-oidc';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +13,11 @@ export class UserRestrictedInfoService {
 
   private apiBaseUrl = environment.userRestrictedInfoUri;
 
-  constructor(private http: HttpClient, private oauthService: OAuthService) { }
+  constructor(private http: HttpClient) { }
 
   getHeaders() {
     const headers = {
-      'Authorization':'Bearer ' + this.oauthService.getAccessToken()
+      'Authorization':'Bearer '
     }
     console.log("header ", headers);
     return new HttpHeaders(headers);

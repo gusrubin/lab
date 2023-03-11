@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
+import { OidcClientNotification, OidcSecurityService, OpenIdConfiguration, UserDataResult } from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +8,44 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  configuration$: Observable<OpenIdConfiguration> | undefined;
+  userDataChanged$: Observable<OidcClientNotification<any>> | undefined;
+  userData$: Observable<UserDataResult> | undefined;
+  isAuthenticated = false;
+  constructor(public oidcSecurityService: OidcSecurityService) {}
 
-  constructor(private authService: AuthService) { }
+  ngOnInit() {
+    this.configuration$ = this.oidcSecurityService.getConfiguration();
+    this.userData$ = this.oidcSecurityService.userData$;
 
-  searchValue = '';
+    this.oidcSecurityService.isAuthenticated$.subscribe(({ isAuthenticated }) => {
+      this.isAuthenticated = isAuthenticated;
 
-  ngOnInit(): void {
+      console.warn('authenticated: ', isAuthenticated);
+    });
   }
 
-  modelChanged() {
-    console.log(this.searchValue);
+  login() {
+    this.oidcSecurityService.authorize();
   }
 
+  refreshSession() {
+    this.oidcSecurityService.forceRefreshSession().subscribe((result) => console.log(result));
+  }
+
+  logout() {
+    this.oidcSecurityService.logoff().subscribe((result) => console.log(result));
+  }
+
+  logoffAndRevokeTokens() {
+    this.oidcSecurityService.logoffAndRevokeTokens().subscribe((result) => console.log(result));
+  }
+
+  revokeRefreshToken() {
+    this.oidcSecurityService.revokeRefreshToken().subscribe((result) => console.log(result));
+  }
+
+  revokeAccessToken() {
+    this.oidcSecurityService.revokeAccessToken().subscribe((result) => console.log(result));
+  }
 }

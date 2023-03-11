@@ -11,7 +11,8 @@ import { PublicInfoComponent } from './public-info/public-info.component';
 import { UserRestrictedInfoComponent } from './user-restricted-info/user-restricted-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
+import { AuthModule, EventTypes, LogLevel, PublicEventsService } from 'angular-auth-oidc-client';
+import { filter } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,34 @@ import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    OAuthModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      config: {
+        authority: 'http://localhost:8001',
+        redirectUrl: 'http://127.0.0.1:4200',
+        postLogoutRedirectUri: 'http://127.0.0.1:4200',
+        clientId: '798889dc-08c9-4153-af38-02b989ccc000',
+        scope: 'openid profile email offline_access',
+        responseType: 'code',
+        silentRenew: true,
+        useRefreshToken: true,
+        logLevel: LogLevel.Debug,
+      },
+    }),
   ],
   providers: [
     AppComponent,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private readonly eventService: PublicEventsService) {
+    this.eventService
+      .registerForEvents()
+      .pipe(filter((notification) => notification.type === EventTypes.ConfigLoaded))
+      .subscribe((config) => {
+        console.log('ConfigLoaded', config);
+      });
+  }
+}
