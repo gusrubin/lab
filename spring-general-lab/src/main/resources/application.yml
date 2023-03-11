@@ -18,7 +18,7 @@ spring:
       #http://localhost:{service-port}/h2-console
   flyway:
     enabled: true
-    baseline-on-migrate: true
+    baseline-on-migrate: true      
       
 #  datasource:
 #    url: jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = ORCLPDB1)))
@@ -41,6 +41,7 @@ spring:
     
 server:
   port: 8090
+  
   
 # Actuator
 management:

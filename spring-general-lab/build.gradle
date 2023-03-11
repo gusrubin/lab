@@ -38,3 +38,14 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+springBoot {
+	buildInfo {
+		properties {
+			artifact = 'spring-general-lab'
+			version = rootProject.version
+			group = rootProject.group
+			name = 'Spring Boot general laboratory application'
+		}
+	}
+}
