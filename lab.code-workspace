@@ -1,16 +1,71 @@
 {
 	"folders": [
 		{
-			"path": "../lab-legacy/microservices/spring-angular-example/frontend/basic-app"
-		},
-		{
 			"path": "angular-basic-app-with-oauth2-login"
 		},
 		{
-			"path": "../external-lab/angular-auth-oidc-client/projects/sample-code-flow-refresh-tokens"
+			"path": "spring-authorization-server"
 		},
 		{
-			"path": "../external-lab/angular-auth-oidc-client"
+			"path": "spring-boot-app-version"
+		},
+		{
+			"path": "spring-boot-native"
+		},
+		{
+			"path": "spring-cache-rest-api"
+		},
+		{
+			"path": "spring-clean-log"
+		},
+		{
+			"path": "spring-general-lab"
+		},
+		{
+			"path": "spring-msaccess-integration"
+		},
+		{
+			"path": "spring-pageable-api"
+		},
+		{
+			"path": "spring-running-in-tomcat"
+		},
+		{
+			"name": "helloworld",
+			"path": "spring-boot-demo/helloworld"
+		},
+		{
+			"name": "javafx-demo",
+			"path": "javafx-demo"
+		},
+		{
+			"path": "angular-getting-started"
+		},
+		{
+			"path": "javafx-getting-started"
+		},
+		{
+			"path": "javafx-helloworld"
+		},
+		{
+			"path": "spring-javafx"
+		},
+		{
+			"path": "../../../../../tmp/spring-boot-javafx"
+		},
+		{
+			"name": "javafx-hello-world",
+			"path": "javafx-hello-world"
+		},
+		{
+			"name": "javafx-fxml-hello-world",
+			"path": "javafx-fxml-hello-world"
 		}
-	]
+	],
+	"settings": {
+		"java.dependency.packagePresentation": "hierarchical",
+		"java.compile.nullAnalysis.mode": "automatic",
+		"editor.suggest.showStatusBar": false,
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
 }

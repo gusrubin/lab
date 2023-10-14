@@ -42,41 +42,41 @@ public class PageableResourceController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public PageableResource postPageableResource(@RequestBody NewPageableResourceDto requestBody) {
-	return this.pageableResourceCrudUseCase.create(this.modelMapper.map(requestBody, PageableResource.class));
+        return this.pageableResourceCrudUseCase.create(this.modelMapper.map(requestBody, PageableResource.class));
     }
 
     @GetMapping
     public Page<PageableResource> getAllPageableResources(@ParameterObject Pageable pageable,
-	    @RequestParam(value = "text", required = false) String text) {
-	Page<PageableResource> pageableResourceList = null;
+            @RequestParam(value = "text", required = false) String text) {
+        Page<PageableResource> pageableResourceList = null;
 
-	if (text != null) {
-	    PageableResource pageableResource = this.pageableResourceCrudUseCase.findByText(text);
+        if (text != null) {
+            PageableResource pageableResource = this.pageableResourceCrudUseCase.findByText(text);
 
-	    pageableResourceList = new PageImpl<>(List.of(pageableResource));
+            pageableResourceList = new PageImpl<>(List.of(pageableResource));
 
-	} else {
-	    pageableResourceList = this.pageableResourceCrudUseCase.findAll(pageable);
-	}
+        } else {
+            pageableResourceList = this.pageableResourceCrudUseCase.findAll(pageable);
+        }
 
-	return pageableResourceList;
+        return pageableResourceList;
     }
 
     @GetMapping("/{id}")
     public PageableResource getPageableResourceById(@PathVariable("id") Long id) {
-	return this.pageableResourceCrudUseCase.findById(id);
+        return this.pageableResourceCrudUseCase.findById(id);
     }
 
     @PutMapping("/{id}")
     public PageableResource putPageableResourceById(@PathVariable("id") Long id,
-	    @RequestBody NewPageableResourceDto requestBody) {
-	return this.pageableResourceCrudUseCase.update(id, this.modelMapper.map(requestBody, PageableResource.class));
+            @RequestBody NewPageableResourceDto requestBody) {
+        return this.pageableResourceCrudUseCase.update(id, this.modelMapper.map(requestBody, PageableResource.class));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePageableResourceById(@PathVariable("id") Long id) {
-	pageableResourceCrudUseCase.delete(id);
+        pageableResourceCrudUseCase.delete(id);
     }
 
 }
