@@ -6,8 +6,13 @@
 /out-tsc
 /bazel-out
 
+# Logs
+/logs/
+/tmp/
+*.log
+
 # Node
-/node_modules
+/node_modules/
 npm-debug.log
 yarn-error.log
 
