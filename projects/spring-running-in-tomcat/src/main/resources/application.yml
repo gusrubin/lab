@@ -1,0 +1,13 @@
+spring: 
+  application:
+    name: spring-running-in-tomcat
+       
+server:
+  port: 8081
+
+logging:
+  file:
+    name: logs/spring-running-in-tomcat.log
+  level:
+    '[com.gusrubin.lab.runningtomcat]': info
+     
