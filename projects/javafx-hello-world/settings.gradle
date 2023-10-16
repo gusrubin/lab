@@ -8,4 +8,3 @@
  */
 
 rootProject.name = 'javafx-hello-world'
-include('app')
