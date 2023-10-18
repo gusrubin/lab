@@ -2,39 +2,6 @@
 	"folders": [
 		{
 			"path": "projects/angular-basic-app-with-oauth2-login"
-		},
-		{
-			"path": "projects/javafx-fxml-hello-world"
-		},
-		{
-			"path": "projects/javafx-hello-world"
-		},
-		{
-			"path": "projects/spring-authorization-server"
-		},
-		{
-			"path": "projects/spring-boot-app-version"
-		},
-		{
-			"path": "projects/spring-boot-native"
-		},
-		{
-			"path": "projects/spring-cache-rest-api"
-		},
-		{
-			"path": "projects/spring-clean-log"
-		},
-		{
-			"path": "projects/spring-general-lab"
-		},
-		{
-			"path": "projects/spring-msaccess-integration"
-		},
-		{
-			"path": "projects/spring-pageable-api"
-		},
-		{
-			"path": "projects/spring-running-in-tomcat"
 		}
 	],
 	"settings": {
