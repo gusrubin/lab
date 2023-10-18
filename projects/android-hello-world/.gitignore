@@ -1,0 +1,42 @@
+# Arquivos e diretórios gerados automaticamente
+build/
+app/build/
+*.iml
+.gradle/
+local.properties
+.idea/
+
+
+# Arquivos de configuração do Android Studio
+*.xml
+*.pro
+*.properties
+
+# Arquivos de build gerados
+out/
+captures/
+*.apk
+*.ap_
+
+# Arquivos de configuração
+gradle-wrapper.properties
+
+# Arquivos de log
+*.log
+
+# Pastas de armazenamento de dados local (exemplo: para bancos de dados)
+/databases/
+
+# Arquivos de geração do Android
+generated/
+/*/R.java
+/*/BuildConfig.java
+/*/Manifest.java
+
+# Arquivos de cache
+.cache/
+
+# Diretório de saída da lint
+lint/ 
+
+
