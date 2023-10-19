@@ -1,3 +1,15 @@
 spring:
+  application:
+    name: javafx-with-spring
   main:
     web-application-type: none
+    banner-mode: off
+    
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  level:
+    '[org.springframework]': info
+    '[com.zaxxer.hikari]': debug
+    '[org.hibernate]': info
+    '[com.gusrubin.lab.javafxwithspring]': debug

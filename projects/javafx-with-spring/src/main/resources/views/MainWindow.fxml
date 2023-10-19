@@ -39,8 +39,10 @@
 			<menus>
 				<Menu mnemonicParsing="false" text="File">
 					<items>
-						<MenuItem mnemonicParsing="false" text="Quit"
-							onAction="#handleCloseAction" />
+						<MenuItem mnemonicParsing="false"
+							onAction="#handleCloseAction" text="Quit" />
+						<MenuItem mnemonicParsing="false"
+							onAction="#handleOpenPersistenceSceneAction" text="Persistence Example" />
 					</items>
 				</Menu>
 			</menus>
@@ -51,7 +53,7 @@
 				<Button fx:id="openDialogButton" layoutX="221.0"
 					layoutY="175.0" mnemonicParsing="false"
 					text="Get Some Info Using Spring" />
-				<Label layoutX="198.0" layoutY="41.0"
+				<Label layoutX="198.0" layoutY="70.0"
 					text="JavaFX with Spring Boot - Hello World" />
 				<DialogPane layoutX="146.0" layoutY="101.0" />
 			</children>

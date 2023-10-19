@@ -9,10 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.rgielen.fxweaver.core.FxmlView;
 
+@Slf4j
 @Component
 @FxmlView("/views/InfoDialog.fxml")
 @RequiredArgsConstructor
@@ -39,18 +42,22 @@ public class InfoDialog {
 
 	@FXML
 	public void initialize() {
+		log.debug("initialize InfoDialog");
 		this.stage = new Stage();
-		stage.setScene(new Scene(dialog));
+		this.stage.initModality(Modality.APPLICATION_MODAL);
+		this.stage.setScene(new Scene(dialog));
 
-		closeButton.setOnAction(actionEvent -> stage.close());
+		this.osVersion.setText(this.getSystemInfoUseCase.get().getOperationSystemName() + " "
+				+ this.getSystemInfoUseCase.get().getOperationSystemVersion());
+		this.jvmVersion.setText(this.getSystemInfoUseCase.get().getJvmVersion());
+		this.springBootVersion.setText(this.getSystemInfoUseCase.get().getSpringBootVersion());
+
+		this.closeButton.setOnAction(actionEvent -> stage.close());
 	}
 
 	public void show() {
-		osVersion.setText(this.getSystemInfoUseCase.get().getOperationSystemName() + " "
-				+ this.getSystemInfoUseCase.get().getOperationSystemVersion());
-		jvmVersion.setText(this.getSystemInfoUseCase.get().getJvmVersion());
-		springBootVersion.setText(this.getSystemInfoUseCase.get().getSpringBootVersion());
-		stage.show();
+		log.debug("show InfoDialog");
+		this.stage.show();
 	}
 
 }

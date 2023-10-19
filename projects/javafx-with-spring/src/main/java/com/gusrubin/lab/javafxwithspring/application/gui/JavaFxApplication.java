@@ -31,6 +31,7 @@ public class JavaFxApplication extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setTitle("JavaFX Hello World");
 		context.publishEvent(new StageReadyEvent(primaryStage));
 	}
 
