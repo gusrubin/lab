@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.rgielen.fxweaver.core.FxControllerAndView;
+import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 
 @Slf4j
@@ -23,8 +25,13 @@ import net.rgielen.fxweaver.core.FxmlView;
 @RequiredArgsConstructor
 public class MainWindow {
 
+	private final FxWeaver fxWeaver;
+
 	@FXML
-	private AnchorPane pane;
+	private AnchorPane systemInfoPane;
+
+	@FXML
+	private AnchorPane persistenceExamplePane;
 
 	@FXML
 	public Button openDialogButton;
@@ -32,26 +39,42 @@ public class MainWindow {
 	@FXML
 	public Button closeButton;
 
-	private final FxControllerAndView<InfoDialog, VBox> someDialog;
+	private final FxControllerAndView<InfoDialog, VBox> systemInfoDialog;
 
 	@FXML
 	public void initialize() {
 		log.debug("initialize MainWindow");
-		openDialogButton.setOnAction(actionEvent -> someDialog.getController().show());
+		openDialogButton.setOnAction(actionEvent -> systemInfoDialog.getController().show());
 	}
 
 	@FXML
-	private void handleCloseAction(ActionEvent event) {
+	private void handleMenuOpenSystemInfoAction(ActionEvent event) {
+		systemInfoPane.setVisible(true);
+		persistenceExamplePane.setVisible(false);
+	}
+
+	@FXML
+	private void handleMenuOpenPersistenceSceneAction(ActionEvent event) {
+//		showCustomDialog(getStage());
+		systemInfoPane.setVisible(false);
+		persistenceExamplePane.setVisible(true);
+	}
+
+//	@FXML
+//	private void handleMenuOpenScene2Action(ActionEvent event) {
+////		showCustomDialog(getStage());
+//		Scene scene2 = new Scene(fxWeaver.loadView(Scene2.class), 600, 400);
+//		getStage().setScene(scene2);
+//
+//	}
+
+	@FXML
+	private void handleMenuCloseAction(ActionEvent event) {
 		getStage().close();
 	}
 
-	@FXML
-	private void handleOpenPersistenceSceneAction(ActionEvent event) {
-		showCustomDialog(getStage());
-	}
-
 	private Stage getStage() {
-		return (Stage) pane.getScene().getWindow();
+		return (Stage) systemInfoPane.getScene().getWindow();
 	}
 
 	private void showCustomDialog(Stage parentStage) {

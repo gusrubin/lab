@@ -9,7 +9,7 @@ import lombok.Getter;
 public class StageReadyEvent extends ApplicationEvent {
 
 	private static final long serialVersionUID = 1L;
-	private final Stage stage;
+	private final transient Stage stage;
 
 	public StageReadyEvent(Stage stage) {
 		super(stage);

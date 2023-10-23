@@ -23,6 +23,7 @@
 	EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -30,50 +31,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="600"
+<VBox prefHeight="400.0" prefWidth="640.0"
 	xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.MainWindow">
+	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.PersistenceExample">
 	<children>
-		<MenuBar VBox.vgrow="NEVER">
-			<menus>
-				<Menu mnemonicParsing="false" text="File">
-					<items>
-						<MenuItem mnemonicParsing="false"
-							onAction="#handleMenuOpenSystemInfoAction" text="System Info" />
-						<MenuItem mnemonicParsing="false"
-							onAction="#handleMenuOpenPersistenceSceneAction"
-							text="Persistence Example" />
-						<MenuItem mnemonicParsing="false"
-							onAction="#handleMenuCloseAction" text="Quit" />
-					</items>
-				</Menu>
-			</menus>
-		</MenuBar>
-		<AnchorPane VBox.vgrow="ALWAYS"
-			xmlns:fx="http://javafx.com/fxml">
+		<AnchorPane fx:id="pane" maxHeight="-1.0" maxWidth="-1.0"
+			prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
 			<children>
-				<AnchorPane fx:id="systemInfoPane"
-					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
-					visible="true">
-					<children>
-						<Label layoutX="198.0" AnchorPane.topAnchor="80"
-							AnchorPane.leftAnchor="185"
-							text="JavaFX with Spring Boot - Hello World" />
-						<Button fx:id="openDialogButton" AnchorPane.topAnchor="160"
-							AnchorPane.leftAnchor="210" mnemonicParsing="false"
-							text="Get Some Info Using Spring" />
-					</children>
-				</AnchorPane>
-				<AnchorPane fx:id="persistenceExamplePane"
-					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
-					visible="false">
-					<children>
-						<Label AnchorPane.topAnchor="20" AnchorPane.leftAnchor="240"
-							text="Persistence Example" />
-					</children>
-				</AnchorPane>
+				<Label layoutX="198.0" layoutY="70.0"
+					text="Persistence Example" />
+				<DialogPane layoutX="146.0" layoutY="101.0" />
 			</children>
 		</AnchorPane>
 	</children>
