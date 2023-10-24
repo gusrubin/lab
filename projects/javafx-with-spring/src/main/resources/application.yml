@@ -5,11 +5,30 @@ spring:
     web-application-type: none
     banner-mode: off
     
+  # H2 Config
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: dev
+    password: dev
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: false
+      #http://localhost:{service-port}/h2-console
+  flyway:
+    enabled: true
+    fail-on-missing-locations: true
+    baseline-on-migrate: true
+    locations:
+    - db/migration
+    
 logging:
   file:
     name: logs/${spring.application.name}.log
   level:
     '[org.springframework]': info
-    '[com.zaxxer.hikari]': debug
+    '[com.zaxxer.hikari]': info
     '[org.hibernate]': info
     '[com.gusrubin.lab.javafxwithspring]': debug

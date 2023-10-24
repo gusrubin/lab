@@ -1,5 +1,7 @@
 package com.gusrubin.lab.javafxwithspring.infrastructure.config;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.InjectionPoint;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,6 +17,13 @@ import net.rgielen.fxweaver.spring.SpringFxWeaver;
 
 @Configuration
 public class ApplicationConfig {
+
+	@Bean
+	ModelMapper getModelMapper() {
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		return modelMapper;
+	}
 
 	@Bean
 	FxWeaver fxWeaver(ConfigurableApplicationContext applicationContext) {

@@ -65,15 +65,16 @@
 							text="Get Some Info Using Spring" />
 					</children>
 				</AnchorPane>
-				<AnchorPane fx:id="persistenceExamplePane"
-					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
-					visible="false">
-					<children>
-						<Label AnchorPane.topAnchor="20" AnchorPane.leftAnchor="240"
-							text="Persistence Example" />
-					</children>
-				</AnchorPane>
+				<fx:include source="PersistenceExample.fxml" fx:id="persistenceExamplePane"/>
+<!-- 				<AnchorPane fx:id="persistenceExamplePane" -->
+<!-- 					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" -->
+<!-- 					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" -->
+<!-- 					visible="false"> -->
+<!-- 					<children> -->
+<!-- 						<Label AnchorPane.topAnchor="20" AnchorPane.leftAnchor="240" -->
+<!-- 							text="Persistence Example" /> -->
+<!-- 					</children> -->
+<!-- 				</AnchorPane> -->
 			</children>
 		</AnchorPane>
 	</children>

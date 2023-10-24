@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.gusrubin.lab.springgenerallab.infrastructure.config;
 
 import org.modelmapper.ModelMapper;
@@ -20,11 +17,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableJpaRepositories(basePackages = "com.gusrubin.lab.springgenerallab.infrastructure.database")
 public class ApplicationConfig {
 
-    @Bean
-    ModelMapper getModelMapper() {
-	ModelMapper modelMapper = new ModelMapper();
-	modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-	return modelMapper;
-    }
+	@Bean
+	ModelMapper getModelMapper() {
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		return modelMapper;
+	}
 
 }
