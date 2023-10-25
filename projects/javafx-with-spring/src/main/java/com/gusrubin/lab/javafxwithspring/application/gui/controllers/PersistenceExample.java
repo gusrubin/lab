@@ -1,5 +1,7 @@
 package com.gusrubin.lab.javafxwithspring.application.gui.controllers;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 
 import com.gusrubin.lab.javafxwithspring.domain.persistence.PersistenceUseCase;
@@ -48,19 +50,20 @@ public class PersistenceExample {
 	@FXML
 	public void initialize() {
 		log.debug("initialize PersistenceExample");
-		this.wordNew.setOnAction(actionEvent -> addWord("bla"));
+		this.wordNew.setOnAction(actionEvent -> showAddNewWordDialog());
 		this.wordDelete.setOnAction(actionEvent -> deleteWord());
 	}
 
 	private void addWord(String word) {
-		this.persistenceUseCase.post(WordRecord.builder().word(word).build());
+		var wordRecord = this.persistenceUseCase.post(WordRecord.builder().word(word).build());
+		this.wordList.getItems().add(wordRecord);
 
-		var wordRecordList = this.persistenceUseCase.getAll();
-
-		ObservableList<WordRecord> items = wordList.getItems();
-		items.clear();
-
-		wordRecordList.stream().forEach(items::add);
+//		var wordRecordList = this.persistenceUseCase.getAll();
+//
+//		ObservableList<WordRecord> items = wordList.getItems();
+//		items.clear();
+//
+//		wordRecordList.stream().forEach(items::add);
 	}
 
 	private void deleteWord() {
@@ -75,10 +78,10 @@ public class PersistenceExample {
 		return (Stage) pane.getScene().getWindow();
 	}
 
-	private void showCustomDialog(Stage parentStage) {
-		Dialog<String> dialog = new Dialog<>();
-		dialog.setTitle("Diálogo Personalizado");
-		dialog.setHeaderText("Digite alguma coisa:");
+	private void showAddNewWordDialog() {
+		Dialog<ButtonType> dialog = new Dialog<>();
+		dialog.setTitle("New Word");
+		dialog.setHeaderText("Type the new word:");
 
 		// Crie um campo de texto no diálogo
 		TextField textField = new TextField();
@@ -88,16 +91,18 @@ public class PersistenceExample {
 		dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
 		// Bloqueie o pai enquanto o diálogo estiver aberto
-		dialog.initOwner(parentStage);
+		dialog.initOwner(getStage());
 		dialog.initModality(Modality.WINDOW_MODAL);
 
 		// Mostre o diálogo e aguarde que o usuário o feche
-//		Optional<ButtonType> result = dialog.show();
-		dialog.show();
+		Optional<ButtonType> result = dialog.showAndWait();
 
-//		if (result.isPresent() && result.get() == ButtonType.OK) {
-//			String input = textField.getText();
-//		}
+		if (result.isPresent() && result.get() == ButtonType.OK) {
+			String newWord = textField.getText();
+
+			var wordRecord = this.persistenceUseCase.post(WordRecord.builder().word(newWord).build());
+			this.wordList.getItems().add(wordRecord);
+		}
 	}
 
 }

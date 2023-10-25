@@ -27,8 +27,8 @@ public class JavaFxApplication extends Application {
 			applicationContext.registerBean(Parameters.class, this::getParameters);
 			applicationContext.registerBean(HostServices.class, this::getHostServices);
 		};
-		this.context = new SpringApplicationBuilder().sources(JavafxWithSpringApplication.class).initializers(initializer)
-				.run(getParameters().getRaw().toArray(new String[0]));
+		this.context = new SpringApplicationBuilder().sources(JavafxWithSpringApplication.class)
+				.initializers(initializer).run(getParameters().getRaw().toArray(new String[0]));
 	}
 
 	@Override
@@ -36,6 +36,8 @@ public class JavaFxApplication extends Application {
 		primaryStage.setTitle("JavaFX Hello World");
 //		primaryStage.setResizable(false);
 		context.publishEvent(new StageReadyEvent(primaryStage));
+
+		GlobalExceptionHandler.setupGlobalExceptionHandler(primaryStage);
 	}
 
 	@Override

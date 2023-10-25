@@ -28,9 +28,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="persistenceExamplePane" prefHeight="400.0"
-	prefWidth="640.0" xmlns="http://javafx.com/javafx/21"
-	xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="640.0"
+	xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.PersistenceExample"
 	visible="false">
 	<children>
