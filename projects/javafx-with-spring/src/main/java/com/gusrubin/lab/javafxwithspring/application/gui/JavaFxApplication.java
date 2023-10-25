@@ -1,5 +1,6 @@
 package com.gusrubin.lab.javafxwithspring.application.gui;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@SpringBootApplication
 public class JavaFxApplication extends Application {
 
 	private ConfigurableApplicationContext context;
@@ -25,8 +27,8 @@ public class JavaFxApplication extends Application {
 			applicationContext.registerBean(Parameters.class, this::getParameters);
 			applicationContext.registerBean(HostServices.class, this::getHostServices);
 		};
-		this.context = new SpringApplicationBuilder().sources(JavafxWithSpringApplication.class)
-				.initializers(initializer).run(getParameters().getRaw().toArray(new String[0]));
+		this.context = new SpringApplicationBuilder().sources(JavafxWithSpringApplication.class).initializers(initializer)
+				.run(getParameters().getRaw().toArray(new String[0]));
 	}
 
 	@Override
@@ -41,6 +43,10 @@ public class JavaFxApplication extends Application {
 		log.info("Application closed");
 		this.context.close();
 		Platform.exit();
+	}
+
+	public static void main(String[] args) {
+		launch(args);
 	}
 
 }
