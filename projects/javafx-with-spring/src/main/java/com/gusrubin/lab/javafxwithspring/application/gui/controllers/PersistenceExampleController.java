@@ -50,12 +50,39 @@ public class PersistenceExampleController {
 	public void initialize() {
 		log.debug("initialize PersistenceExampleController");
 		this.wordNew.setOnAction(actionEvent -> showAddNewWordDialog());
+		this.wordEdit.setOnAction(actionEvent -> showEditWordDialog());
 		this.wordDelete.setOnAction(actionEvent -> deleteWord());
 		refreshWordList();
 	}
 
 	private void refreshWordList() {
 		this.persistenceUseCase.getAll().stream().forEach(this.wordList.getItems()::add);
+	}
+
+	private Stage getStage() {
+		return (Stage) persistenceExamplePane.getScene().getWindow();
+	}
+
+	private void showAddNewWordDialog() {
+		var newWord = showWordDialog("Add Word");
+
+		if (newWord != null) {
+			var wordRecord = this.persistenceUseCase.post(WordRecord.builder().word(newWord).build());
+			this.wordList.getItems().add(wordRecord);
+		}
+	}
+
+	private void showEditWordDialog() {
+		var newWord = showWordDialog("Edit Word");
+
+		if (newWord != null) {
+			WordRecord selectedItem = this.wordList.getSelectionModel().getSelectedItem();
+			this.persistenceUseCase.put(selectedItem.getId(), newWord);
+
+			var indexOfSelectedItem = this.wordList.getItems().indexOf(selectedItem);
+			this.wordList.getItems().get(indexOfSelectedItem).setWord(newWord);
+			this.wordList.refresh();
+		}
 	}
 
 	private void deleteWord() {
@@ -66,35 +93,28 @@ public class PersistenceExampleController {
 		}
 	}
 
-	private Stage getStage() {
-		return (Stage) persistenceExamplePane.getScene().getWindow();
-	}
-
-	private void showAddNewWordDialog() {
+	private String showWordDialog(String title) {
 		Dialog<ButtonType> dialog = new Dialog<>();
-		dialog.setTitle("New Word");
+		dialog.setTitle(title);
 		dialog.setHeaderText("Type the new word:");
 
-		// Crie um campo de texto no diálogo
 		TextField textField = new TextField();
 		dialog.getDialogPane().setContent(textField);
 
-		// Adicione botões padrão (OK e Cancelar)
 		dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
-		// Bloqueie o pai enquanto o diálogo estiver aberto
 		dialog.initOwner(getStage());
 		dialog.initModality(Modality.WINDOW_MODAL);
 
-		// Mostre o diálogo e aguarde que o usuário o feche
 		Optional<ButtonType> result = dialog.showAndWait();
 
-		if (result.isPresent() && result.get() == ButtonType.OK) {
-			String newWord = textField.getText();
+		String newWord = null;
 
-			var wordRecord = this.persistenceUseCase.post(WordRecord.builder().word(newWord).build());
-			this.wordList.getItems().add(wordRecord);
+		if (result.isPresent() && result.get() == ButtonType.OK) {
+			newWord = textField.getText();
 		}
+
+		return newWord;
 	}
 
 }
