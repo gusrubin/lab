@@ -3,6 +3,7 @@ package com.gusrubin.lab.javafxwithspring.infrastructure.adapters;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import com.gusrubin.lab.javafxwithspring.domain.persistence.PersistenceRepositoryPort;
@@ -10,6 +11,7 @@ import com.gusrubin.lab.javafxwithspring.domain.persistence.WordRecord;
 import com.gusrubin.lab.javafxwithspring.infrastructure.database.entities.WordRecordEntity;
 import com.gusrubin.lab.javafxwithspring.infrastructure.database.repositories.WordRecordRepository;
 
+import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 
 @Component
@@ -37,8 +39,23 @@ public class PersistenceRepositoryPortAdapter implements PersistenceRepositoryPo
 
 	@Override
 	public List<WordRecord> findByFilter(String filter) {
-		// TODO Auto-generated method stub
-		return null;
+		Specification<WordRecordEntity> spec = containsTextInWord(filter);
+
+		return this.wordRecordRepository.findAll(spec).stream().map(this::toDomain).toList();
+	}
+
+	public static Specification<WordRecordEntity> containsTextInWord(String text) {
+		return (root, query, criteriaBuilder) -> {
+			if (text == null || text.isEmpty()) {
+				return criteriaBuilder.conjunction();
+			}
+
+			String textoLowerCase = text.toLowerCase();
+			Predicate predicate = criteriaBuilder.like(criteriaBuilder.lower(root.get("word")),
+					"%" + textoLowerCase + "%");
+
+			return predicate;
+		};
 	}
 
 	@Override

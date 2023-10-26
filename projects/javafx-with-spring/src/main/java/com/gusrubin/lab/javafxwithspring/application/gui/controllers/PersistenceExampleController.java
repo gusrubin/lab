@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import com.gusrubin.lab.javafxwithspring.domain.persistence.PersistenceUseCase;
 import com.gusrubin.lab.javafxwithspring.domain.persistence.WordRecord;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -52,6 +54,7 @@ public class PersistenceExampleController {
 		this.wordNew.setOnAction(actionEvent -> showAddNewWordDialog());
 		this.wordEdit.setOnAction(actionEvent -> showEditWordDialog());
 		this.wordDelete.setOnAction(actionEvent -> deleteWord());
+		this.wordFilter.setOnKeyTyped(event -> filterWord(this.wordFilter.getText()));
 		refreshWordList();
 	}
 
@@ -93,6 +96,11 @@ public class PersistenceExampleController {
 		}
 	}
 
+	private void filterWord(String text) {
+		var filteredWordList = this.persistenceUseCase.getByFilter(text);
+		this.wordList.setItems(FXCollections.observableArrayList(filteredWordList));
+	}
+
 	private String showWordDialog(String title) {
 		Dialog<ButtonType> dialog = new Dialog<>();
 		dialog.setTitle(title);
@@ -105,6 +113,11 @@ public class PersistenceExampleController {
 
 		dialog.initOwner(getStage());
 		dialog.initModality(Modality.WINDOW_MODAL);
+
+		Platform.runLater(() -> {
+			textField.requestFocus();
+			textField.positionCaret(textField.getText().length());
+		});
 
 		Optional<ButtonType> result = dialog.showAndWait();
 

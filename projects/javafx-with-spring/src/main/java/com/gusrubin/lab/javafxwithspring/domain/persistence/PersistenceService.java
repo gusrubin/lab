@@ -36,8 +36,7 @@ public class PersistenceService implements PersistenceUseCase {
 
 	@Override
 	public List<WordRecord> getByFilter(String filter) {
-
-		return null;
+		return this.persistenceRepositoryPort.findByFilter(filter);
 	}
 
 	@Override
