@@ -10,7 +10,7 @@
 <VBox fx:id="dialog" alignment="BOTTOM_CENTER" prefHeight="164.0"
 	prefWidth="386.0" xmlns="http://javafx.com/javafx/21"
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.InfoDialog">
+	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.SystemInfoDialogController">
 	<Pane prefHeight="130.0" prefWidth="374.0">
 		<children>
 			<Label layoutX="14.0" layoutY="35.0"
@@ -43,5 +43,4 @@
 	<padding>
 		<Insets bottom="10.0" />
 	</padding>
-
 </VBox>

@@ -4,20 +4,20 @@ import org.springframework.stereotype.Component;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.rgielen.fxweaver.core.FxControllerAndView;
 import net.rgielen.fxweaver.core.FxmlView;
 
 @Slf4j
 @Component
-@FxmlView("/views/MainWindow.fxml")
+@FxmlView("/views/MainView.fxml")
 @RequiredArgsConstructor
-public class MainWindow {
+public class MainController {
+
+	@FXML
+	private AnchorPane mainPane;
 
 	@FXML
 	private AnchorPane systemInfoPane;
@@ -26,29 +26,25 @@ public class MainWindow {
 	private AnchorPane persistenceExamplePane;
 
 	@FXML
-	public Button openDialogButton;
-
-	@FXML
-	public Button closeButton;
-
-	private final FxControllerAndView<InfoDialog, VBox> systemInfoDialog;
-
-	@FXML
 	public void initialize() {
-		log.debug("initialize MainWindow");
-		openDialogButton.setOnAction(actionEvent -> systemInfoDialog.getController().show());
+		log.debug("initialize MainController");
+		this.mainPane.setVisible(true);
+		this.systemInfoPane.setVisible(false);
+		this.persistenceExamplePane.setVisible(false);
 	}
 
 	@FXML
 	private void handleMenuOpenSystemInfoAction(ActionEvent event) {
-		systemInfoPane.setVisible(true);
-		persistenceExamplePane.setVisible(false);
+		this.mainPane.setVisible(false);
+		this.systemInfoPane.setVisible(true);
+		this.persistenceExamplePane.setVisible(false);
 	}
 
 	@FXML
 	private void handleMenuOpenPersistenceSceneAction(ActionEvent event) {
-		systemInfoPane.setVisible(false);
-		persistenceExamplePane.setVisible(true);
+		this.mainPane.setVisible(false);
+		this.systemInfoPane.setVisible(false);
+		this.persistenceExamplePane.setVisible(true);
 	}
 
 	@FXML

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import com.gusrubin.lab.javafxwithspring.domain.persistence.PersistenceUseCase;
 import com.gusrubin.lab.javafxwithspring.domain.persistence.WordRecord;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -23,14 +22,14 @@ import net.rgielen.fxweaver.core.FxmlView;
 
 @Slf4j
 @Component
-@FxmlView("/views/PersistenceExample.fxml")
+@FxmlView("/views/PersistenceExampleView.fxml")
 @RequiredArgsConstructor
-public class PersistenceExample {
+public class PersistenceExampleController {
 
 	private final PersistenceUseCase persistenceUseCase;
 
 	@FXML
-	private AnchorPane pane;
+	private AnchorPane persistenceExamplePane;
 
 	@FXML
 	private ListView<WordRecord> wordList;
@@ -49,21 +48,14 @@ public class PersistenceExample {
 
 	@FXML
 	public void initialize() {
-		log.debug("initialize PersistenceExample");
+		log.debug("initialize PersistenceExampleController");
 		this.wordNew.setOnAction(actionEvent -> showAddNewWordDialog());
 		this.wordDelete.setOnAction(actionEvent -> deleteWord());
+		refreshWordList();
 	}
 
-	private void addWord(String word) {
-		var wordRecord = this.persistenceUseCase.post(WordRecord.builder().word(word).build());
-		this.wordList.getItems().add(wordRecord);
-
-//		var wordRecordList = this.persistenceUseCase.getAll();
-//
-//		ObservableList<WordRecord> items = wordList.getItems();
-//		items.clear();
-//
-//		wordRecordList.stream().forEach(items::add);
+	private void refreshWordList() {
+		this.persistenceUseCase.getAll().stream().forEach(this.wordList.getItems()::add);
 	}
 
 	private void deleteWord() {
@@ -75,7 +67,7 @@ public class PersistenceExample {
 	}
 
 	private Stage getStage() {
-		return (Stage) pane.getScene().getWindow();
+		return (Stage) persistenceExamplePane.getScene().getWindow();
 	}
 
 	private void showAddNewWordDialog() {

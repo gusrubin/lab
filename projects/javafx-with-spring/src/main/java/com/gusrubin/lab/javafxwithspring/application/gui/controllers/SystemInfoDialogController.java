@@ -17,9 +17,9 @@ import net.rgielen.fxweaver.core.FxmlView;
 
 @Slf4j
 @Component
-@FxmlView("/views/InfoDialog.fxml")
+@FxmlView("/views/SystemInfoDialogView.fxml")
 @RequiredArgsConstructor
-public class InfoDialog {
+public class SystemInfoDialogController {
 
 	private Stage stage;
 
