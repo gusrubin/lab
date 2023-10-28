@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="splashPane" prefWidth="650"
+	prefHeight="350" xmlns="http://javafx.com/javafx/21"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.SplashScreenController">
+	<stylesheets>
+		/views/style.css
+	</stylesheets>
+	<children>
+		<Label fx:id="splashLabel" AnchorPane.leftAnchor="0"
+			AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"
+			AnchorPane.bottomAnchor="0" alignment="CENTER" />
+		<Label fx:id="splashStartingLabel" AnchorPane.leftAnchor="0"
+			AnchorPane.rightAnchor="0" AnchorPane.topAnchor="110"
+			AnchorPane.bottomAnchor="0" alignment="CENTER" />
+		<Label fx:id="splashSystemInfoLabel" AnchorPane.leftAnchor="0"
+			AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10"
+			alignment="BASELINE_RIGHT" />
+	</children>
+</AnchorPane>

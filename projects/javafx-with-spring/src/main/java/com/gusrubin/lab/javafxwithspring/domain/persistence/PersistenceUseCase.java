@@ -4,16 +4,16 @@ import java.util.List;
 
 public interface PersistenceUseCase {
 
-	WordRecord post(WordRecord wordRecord);
+    WordRecord post(WordRecord wordRecord);
 
-	List<WordRecord> getAll();
+    List<WordRecord> getAll();
 
-	WordRecord getById(Long id);
+    WordRecord getById(Long id);
 
-	List<WordRecord> getByFilter(String filter);
+    List<WordRecord> getByFilter(String filter);
 
-	WordRecord put(Long id, String newWord);
+    WordRecord put(Long id, String newWord);
 
-	void delete(Long id);
+    void delete(Long id);
 
 }

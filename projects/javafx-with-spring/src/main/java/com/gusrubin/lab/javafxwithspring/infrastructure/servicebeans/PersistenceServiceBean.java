@@ -8,8 +8,8 @@ import com.gusrubin.lab.javafxwithspring.domain.persistence.PersistenceService;
 @Service
 public class PersistenceServiceBean extends PersistenceService {
 
-	public PersistenceServiceBean(PersistenceRepositoryPort persistenceRepositoryPort) {
-		super(persistenceRepositoryPort);
-	}
+    public PersistenceServiceBean(PersistenceRepositoryPort persistenceRepositoryPort) {
+	super(persistenceRepositoryPort);
+    }
 
 }

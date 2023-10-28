@@ -17,10 +17,10 @@ import lombok.NoArgsConstructor;
 @Entity(name = "word_record")
 public class WordRecordEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column(name = "word")
-	private String word;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "word")
+    private String word;
 
 }

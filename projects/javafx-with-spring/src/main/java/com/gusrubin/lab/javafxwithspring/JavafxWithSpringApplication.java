@@ -8,8 +8,8 @@ import javafx.application.Application;
 @SpringBootApplication
 public class JavafxWithSpringApplication {
 
-	public static void main(String[] args) {
-		Application.launch(JavaFxApplication.class, args);
-	}
+    public static void main(String[] args) {
+	Application.launch(JavaFxApplication.class, args);
+    }
 
 }

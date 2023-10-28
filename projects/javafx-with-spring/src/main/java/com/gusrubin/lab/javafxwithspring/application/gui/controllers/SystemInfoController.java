@@ -17,18 +17,18 @@ import net.rgielen.fxweaver.core.FxmlView;
 @RequiredArgsConstructor
 public class SystemInfoController {
 
-	@FXML
-	private AnchorPane systemInfoPane;
+    @FXML
+    private AnchorPane systemInfoPane;
 
-	@FXML
-	public Button openDialogButton;
+    @FXML
+    public Button openDialogButton;
 
-	private final FxControllerAndView<SystemInfoDialogController, VBox> systemInfoDialog;
+    private final FxControllerAndView<SystemInfoDialogController, VBox> systemInfoDialog;
 
-	@FXML
-	public void initialize() {
-		log.debug("initialize SystemInfoController");
-		openDialogButton.setOnAction(actionEvent -> systemInfoDialog.getController().show());
-	}
+    @FXML
+    public void initialize() {
+	log.debug("initialize SystemInfoController");
+	openDialogButton.setOnAction(actionEvent -> systemInfoDialog.getController().show());
+    }
 
 }

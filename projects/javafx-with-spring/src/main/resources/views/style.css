@@ -1,0 +1,15 @@
+#splashPane {
+    -fx-background-color: lightblue;
+}
+
+#splashLabel {
+	-fx-font-family: 'sans-serif';
+	-fx-font-weight: bold;
+    -fx-font-size: 25.0;
+}
+
+#splashStartingLabel {
+	-fx-font-family: 'sans-serif';
+	-fx-text-fill: red;
+    -fx-font-size: 11.0;
+}

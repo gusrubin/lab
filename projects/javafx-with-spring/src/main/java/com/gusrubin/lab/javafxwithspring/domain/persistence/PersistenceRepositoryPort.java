@@ -4,14 +4,14 @@ import java.util.List;
 
 public interface PersistenceRepositoryPort {
 
-	WordRecord save(WordRecord wordRecord);
+    WordRecord save(WordRecord wordRecord);
 
-	List<WordRecord> findAll();
+    List<WordRecord> findAll();
 
-	WordRecord findById(Long id);
+    WordRecord findById(Long id);
 
-	List<WordRecord> findByFilter(String filter);
+    List<WordRecord> findByFilter(String filter);
 
-	void delete(Long id);
+    void delete(Long id);
 
 }

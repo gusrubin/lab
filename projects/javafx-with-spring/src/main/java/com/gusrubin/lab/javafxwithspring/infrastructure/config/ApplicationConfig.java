@@ -18,22 +18,22 @@ import net.rgielen.fxweaver.spring.SpringFxWeaver;
 @Configuration
 public class ApplicationConfig {
 
-	@Bean
-	ModelMapper getModelMapper() {
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-		return modelMapper;
-	}
+    @Bean
+    ModelMapper getModelMapper() {
+	ModelMapper modelMapper = new ModelMapper();
+	modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+	return modelMapper;
+    }
 
-	@Bean
-	FxWeaver fxWeaver(ConfigurableApplicationContext applicationContext) {
-		return new SpringFxWeaver(applicationContext);
-	}
+    @Bean
+    FxWeaver fxWeaver(ConfigurableApplicationContext applicationContext) {
+	return new SpringFxWeaver(applicationContext);
+    }
 
-	@Bean
-	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	<C, V extends Node> FxControllerAndView<C, V> controllerAndView(FxWeaver fxWeaver, InjectionPoint injectionPoint) {
-		return new InjectionPointLazyFxControllerAndViewResolver(fxWeaver).resolve(injectionPoint);
-	}
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    <C, V extends Node> FxControllerAndView<C, V> controllerAndView(FxWeaver fxWeaver, InjectionPoint injectionPoint) {
+	return new InjectionPointLazyFxControllerAndViewResolver(fxWeaver).resolve(injectionPoint);
+    }
 
 }

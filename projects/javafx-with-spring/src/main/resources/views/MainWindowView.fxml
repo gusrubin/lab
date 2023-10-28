@@ -31,7 +31,7 @@
 
 <VBox prefHeight="400" prefWidth="600"
 	xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.MainController">
+	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.MainWindowController">
 	<children>
 		<MenuBar VBox.vgrow="NEVER">
 			<menus>
@@ -54,36 +54,14 @@
 				<AnchorPane fx:id="mainPane" VBox.vgrow="ALWAYS"
 					xmlns:fx="http://javafx.com/fxml">
 					<children>
-						<Label text="JavaFX with Spring Boot - Hello World"
-							AnchorPane.leftAnchor="180" AnchorPane.topAnchor="150" />
+						<Label fx:id="mainPaneLabel" AnchorPane.leftAnchor="200"
+							AnchorPane.topAnchor="150" />
 					</children>
 				</AnchorPane>
 				<fx:include fx:id="systemInfoPane"
 					source="SystemInfoView.fxml" />
-				<!-- <AnchorPane fx:id="systemInfoPane" -->
-				<!-- AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" -->
-				<!-- AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" -->
-				<!-- visible="true"> -->
-				<!-- <children> -->
-				<!-- <Label layoutX="198.0" AnchorPane.topAnchor="80" -->
-				<!-- AnchorPane.leftAnchor="185" -->
-				<!-- text="JavaFX with Spring Boot - Hello World" /> -->
-				<!-- <Button fx:id="openDialogButton" AnchorPane.topAnchor="160" -->
-				<!-- AnchorPane.leftAnchor="210" mnemonicParsing="false" -->
-				<!-- text="Get Some Info Using Spring" /> -->
-				<!-- </children> -->
-				<!-- </AnchorPane> -->
 				<fx:include fx:id="persistenceExamplePane"
 					source="PersistenceExampleView.fxml" />
-				<!-- <AnchorPane fx:id="persistenceExamplePane" -->
-				<!-- AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" -->
-				<!-- AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" -->
-				<!-- visible="false"> -->
-				<!-- <children> -->
-				<!-- <Label AnchorPane.topAnchor="20" AnchorPane.leftAnchor="240" -->
-				<!-- text="Persistence Example" /> -->
-				<!-- </children> -->
-				<!-- </AnchorPane> -->
 			</children>
 		</AnchorPane>
 	</children>
