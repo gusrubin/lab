@@ -42,13 +42,13 @@ public class JavaFxApplication extends Application {
 		    try {
 			initSpringContext();
 
-			log.info("Close splash screen");
-			primaryStage.close();
-
 			GlobalExceptionHandler.setupGlobalExceptionHandler(primaryStage);
 
 			log.info("Show main window");
 			springApplicationContext.publishEvent(new PrimaryStageReadyEvent(primaryStage));
+
+			log.info("Close splash screen");
+			primaryStage.close();
 
 		    } catch (Exception e) {
 			log.error("Failed to load application. {}", e.getMessage());

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=JavaFX with Spring
+Exec=java -jar /home/rubin/lab/projects/javafx-with-spring/build/libs/javafx-with-spring-1.0.0-SNAPSHOT.jar
+Terminal=false
+Type=Application
+Icon=/home/rubin/lab/projects/javafx-with-spring/src/main/resources/icon.png
+Categories=Aplicativos;Desenvolvimento;
