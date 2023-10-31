@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.gusrubin.lab.nativeapp.application.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
