@@ -1,0 +1,11 @@
+<div>
+  <h1>{{ i18nService.getTranslation('title') }}</h1>
+  <p>{{ i18nService.getTranslation('description') }}</p>
+
+  <label for="language">Choose a language:</label>
+  <select id="language" [(ngModel)]="selectedLang" (change)="changeLanguage(selectedLang)">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="pt">Português</option>
+  </select>
+</div>

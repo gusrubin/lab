@@ -19,8 +19,8 @@ public class GlobalExceptionHandler {
 
     private static void showAddNewWordDialog(Stage stage, String message) {
 	Dialog<ButtonType> dialog = new Dialog<>();
-	dialog.setTitle("Error");
-	dialog.setHeaderText("Operation failed");
+	dialog.setTitle("Erro");
+	dialog.setHeaderText("Operação ");
 	dialog.setContentText(message);
 
 	dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);

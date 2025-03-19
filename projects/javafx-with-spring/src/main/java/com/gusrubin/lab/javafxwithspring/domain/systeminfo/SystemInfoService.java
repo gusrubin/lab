@@ -6,14 +6,14 @@ public class SystemInfoService implements GetSystemInfoUseCase {
 
     @Override
     public SystemInfo get() {
-	return SystemInfo.builder()
+	return SystemInfo.builder()		
 	// @formatter:off
-				.operationSystemName(System.getProperty("os.name"))
-				.operationSystemVersion(System.getProperty("os.version"))
-				.jvmVersion(System.getProperty("java.version"))
-				.springBootVersion(SpringBootVersion.getVersion())
-				.build();
-		// @formatter:on
+		.operationSystemName(System.getProperty("os.name"))
+		.operationSystemVersion(System.getProperty("os.version"))
+		.jvmVersion(System.getProperty("java.version"))
+		.springBootVersion(SpringBootVersion.getVersion())
+		.build();
+	// @formatter:on
     }
 
 }

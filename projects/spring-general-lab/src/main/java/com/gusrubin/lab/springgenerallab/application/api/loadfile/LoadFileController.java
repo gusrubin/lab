@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.gusrubin.lab.springgenerallab.application.api.loadfile;
 
 import java.io.BufferedReader;
