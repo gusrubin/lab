@@ -56,6 +56,9 @@ management:
         
 springdoc:
   show-actuator: true
+  swagger-ui: #swagger URL: http://localhost:8080/swagger-ui/index.html
+    doc-expansion: none
+    tags-sorter: alpha
     
 logging:
   file:
