@@ -1,0 +1,171 @@
+{
+  "name": "Exemplos",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Legacy REST",
+      "filename": "Legacy REST.bru",
+      "seq": 2,
+      "settings": {
+        "encodeUrl": true
+      },
+      "tags": [],
+      "request": {
+        "url": "http://localhost:8081/api/v1/users",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "xml": "\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Legacy SOAP",
+      "filename": "Legacy SOAP.bru",
+      "seq": 3,
+      "settings": {
+        "encodeUrl": true
+      },
+      "tags": [],
+      "request": {
+        "url": "http://localhost:8082/ws",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "text/xml; charset=utf-8",
+            "enabled": true
+          },
+          {
+            "name": "SOAPAction",
+            "value": "\"http://example.com/localidade/getLocalidadeRequest\"",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "xml",
+          "xml": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:loc=\"http://example.com/localidade\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <loc:getLocalidadeRequest>\n         <loc:nomeCidade>Campinas</loc:nomeCidade>\n      </loc:getLocalidadeRequest>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Localidade by Hub",
+      "filename": "Localidade by Hub.bru",
+      "seq": 5,
+      "settings": {
+        "encodeUrl": true
+      },
+      "tags": [],
+      "request": {
+        "url": "http://localhost:8080/api/cidade/Campinas",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "xml": "\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Users by Hub",
+      "filename": "Users by Hub.bru",
+      "seq": 4,
+      "settings": {
+        "encodeUrl": true
+      },
+      "tags": [],
+      "request": {
+        "url": "http://localhost:8080/api/users",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "xml": "\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "Exemplos",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0012769699096679688,
+    "filesCount": 4
+  }
+}
