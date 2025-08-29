@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://example.com/localidade"
+  elementFormDefault="qualified">
+
+  <xs:element name="getLocalidadeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nomeCidade" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getLocalidadeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cidade" type="xs:string"/>
+        <xs:element name="estado" type="xs:string"/>
+        <xs:element name="pais" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
