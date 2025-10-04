@@ -1,67 +1,67 @@
 plugins {
-	id 'java'
-	id 'application'
-	id 'org.springframework.boot' version '3.1.5'
-	id 'io.spring.dependency-management' version '1.1.3'
-	id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '3.5.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 group = 'com.gusrubin.lab'
 version = '1.0.0-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+    sourceCompatibility = '21'
 }
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.modelmapper:modelmapper:3.2.0'
-	runtimeOnly 'com.h2database:h2'
-	implementation 'org.flywaydb:flyway-core'
-	implementation 'net.rgielen:javafx-weaver-spring-boot-starter:1.3.0'
-	implementation 'org.openjfx:javafx-controls:21.0.1'
-	implementation 'org.openjfx:javafx-graphics:21.0.1'
-	implementation 'org.openjfx:javafx-fxml:21.0.1'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	compileOnly 'com.google.inject:guice:7.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.modelmapper:modelmapper:3.2.5'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'net.rgielen:javafx-weaver-spring-boot-starter:2.0.1'
+    implementation 'org.openjfx:javafx-controls:23.0.2'
+    implementation 'org.openjfx:javafx-graphics:23.0.2'
+    implementation 'org.openjfx:javafx-fxml:23.0.2'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    compileOnly 'com.google.inject:guice:7.0.0'
 }
 
 javafx {
     version = "21.0.1"
-    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml' ]
+    modules = ['javafx.base', 'javafx.controls', 'javafx.fxml']
 }
 
 application {
     // Define the main class for the application.
     mainClass = 'com.gusrubin.lab.javafxwithspring.application.gui.JavaFxApplication'
-}
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
-
-run {
     applicationDefaultJvmArgs = ['--add-exports=javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED',
                                  '--add-exports=javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED',
                                  '--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED',
                                  '--add-exports=javafx.graphics/com.sun.glass.ui=ALL-UNNAMED',
     ]
+}
 
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+run {
     jvmArgs = ['--add-exports=javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED',
                '--add-exports=javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED',
                '--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED',
