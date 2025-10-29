@@ -1,6 +1,6 @@
 package com.gusrubin.lab.javafxwithspring;
 
-import com.gusrubin.lab.javafxwithspring.application.gui.JavaFxApplication;
+import com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.JavaFxApplication;
 import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

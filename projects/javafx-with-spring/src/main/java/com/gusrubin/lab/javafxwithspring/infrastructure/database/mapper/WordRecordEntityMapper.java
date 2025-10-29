@@ -12,5 +12,7 @@ public interface WordRecordEntityMapper {
 
   WordRecordEntity toEntity(WordRecord domain);
 
-  WordRecord toDomain(WordRecordEntity entity);
+  default WordRecord toDomain(WordRecordEntity entity) {
+    return WordRecord.restore(entity.getId(), entity.getWord());
+  }
 }

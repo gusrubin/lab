@@ -1,17 +1,46 @@
 package com.gusrubin.lab.javafxwithspring.domain.persistence;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@EqualsAndHashCode
 public class WordRecord {
 
-    private Long id;
-    private String word;
+  private final Long id;
+  private String word;
 
+  private WordRecord(Long id, String word) {
+    if (word == null || word.isBlank()) {
+      throw new IllegalArgumentException("word is required");
+    }
+
+    this.id = id;
+    this.word = word;
+  }
+
+  public record WordRecordCreateDto(String word) {}
+
+  // Factory
+  public static WordRecord create(WordRecordCreateDto dto) {
+    return new WordRecord(null, dto.word);
+  }
+
+  public record WordRecordUpdateDto(String word) {}
+
+  public void update(WordRecordUpdateDto dto) {
+    if (dto.word != null && !dto.word.isBlank()) {
+      this.word = dto.word;
+    }
+  }
+
+  // Load values from database
+  public static WordRecord restore(Long id, String word) {
+    if (id == null) {
+      throw new IllegalArgumentException("id is required");
+    }
+    return new WordRecord(id, word);
+  }
 }

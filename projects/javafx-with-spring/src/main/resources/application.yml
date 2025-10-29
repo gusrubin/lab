@@ -4,7 +4,7 @@ spring:
   main:
     web-application-type: none
     banner-mode: off
-    
+
   # H2 Config
   datasource:
     driver-class-name: org.h2.Driver
@@ -22,8 +22,8 @@ spring:
     fail-on-missing-locations: true
     baseline-on-migrate: true
     locations:
-    - db/migration
-    
+      - db/migration
+
 logging:
   file:
     name: logs/${spring.application.name}.log

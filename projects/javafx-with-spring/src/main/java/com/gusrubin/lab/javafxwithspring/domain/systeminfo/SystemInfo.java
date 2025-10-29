@@ -11,9 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SystemInfo {
 
-    private String operationSystemName;
-    private String operationSystemVersion;
-    private String jvmVersion;
-    private String springBootVersion;
-
+  private String operationSystemName;
+  private String operationSystemVersion;
+  private String jvmVersion;
+  private String springBootVersion;
 }

@@ -27,24 +27,21 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <AnchorPane fx:id="persistenceExamplePane" prefHeight="400.0" prefWidth="640.0"
-	xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.PersistenceExampleController">
-	<children>
-		<Label text="Persistence Example" AnchorPane.leftAnchor="240"
-			AnchorPane.topAnchor="20" />
-		<ListView fx:id="wordList" layoutX="178.0" layoutY="70.0"
-			prefHeight="200.0" prefWidth="244.0" />
-		<Button fx:id="wordNew" layoutX="435.0" layoutY="70.0"
-			mnemonicParsing="false" prefHeight="24.0" prefWidth="61.0" text="New" />
-		<Button fx:id="wordEdit" layoutX="435.0" layoutY="104.0"
-			mnemonicParsing="false" prefHeight="24.0" prefWidth="61.0"
-			text="Edit" />
-		<Button fx:id="wordDelete" layoutX="435.0" layoutY="139.0"
-			mnemonicParsing="false" text="Delete" />
-		<Label layoutX="178.0" layoutY="277.0" text="Filter" />
-		<TextField fx:id="wordFilter" layoutX="178.0"
-			layoutY="293.0" prefHeight="24.0" prefWidth="244.0" />
-	</children>
+  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.controllers.PersistenceExampleController">
+  <Label text="Persistence Example" AnchorPane.leftAnchor="240"
+    AnchorPane.topAnchor="20"/>
+  <ListView fx:id="wordList" layoutX="178.0" layoutY="70.0"
+    prefHeight="200.0" prefWidth="244.0"/>
+  <Button fx:id="wordNew" layoutX="435.0" layoutY="70.0"
+    mnemonicParsing="false" prefHeight="24.0" prefWidth="61.0" text="New"/>
+  <Button fx:id="wordEdit" layoutX="435.0" layoutY="104.0"
+    mnemonicParsing="false" prefHeight="24.0" prefWidth="61.0"
+    text="Edit"/>
+  <Button fx:id="wordDelete" layoutX="435.0" layoutY="139.0"
+    mnemonicParsing="false" text="Delete"/>
+  <Label layoutX="178.0" layoutY="277.0" text="Filter"/>
+  <TextField fx:id="wordFilter" layoutX="178.0"
+    layoutY="293.0" prefHeight="24.0" prefWidth="244.0"/>
 </AnchorPane>

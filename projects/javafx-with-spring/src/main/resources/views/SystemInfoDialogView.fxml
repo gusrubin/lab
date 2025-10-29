@@ -6,41 +6,38 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <VBox fx:id="dialog" alignment="BOTTOM_CENTER" prefHeight="164.0"
-	prefWidth="386.0" xmlns="http://javafx.com/javafx/21"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.SystemInfoDialogController">
-	<Pane prefHeight="130.0" prefWidth="374.0">
-		<children>
-			<Label layoutX="14.0" layoutY="35.0"
-				text="Operational System Version:">
-				<font>
-					<Font name="System Bold" size="13.0" />
-				</font>
-			</Label>
-			<Label layoutX="14.0" layoutY="57.0" text="JVM Version:">
-				<font>
-					<Font name="System Bold" size="13.0" />
-				</font>
-			</Label>
-			<Label layoutX="14.0" layoutY="79.0"
-				text="Spring Boot Version:">
-				<font>
-					<Font name="System Bold" size="13.0" />
-				</font>
-			</Label>
-			<Label fx:id="osVersion" layoutX="227.0" layoutY="35.0"
-				text="Label" />
-			<Label fx:id="jvmVersion" layoutX="110.0" layoutY="57.0"
-				text="Label" />
-			<Label fx:id="springBootVersion" layoutX="169.0" layoutY="79.0"
-				text="Label" />
-		</children>
-	</Pane>
+  prefWidth="386.0" xmlns="http://javafx.com/javafx/21"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.controllers.SystemInfoDialogController">
+  <Pane prefHeight="130.0" prefWidth="374.0">
+    <Label layoutX="14.0" layoutY="35.0"
+      text="Operational System Version:">
+      <font>
+        <Font name="System Bold" size="13.0"/>
+      </font>
+    </Label>
+    <Label layoutX="14.0" layoutY="57.0" text="JVM Version:">
+      <font>
+        <Font name="System Bold" size="13.0"/>
+      </font>
+    </Label>
+    <Label layoutX="14.0" layoutY="79.0"
+      text="Spring Boot Version:">
+      <font>
+        <Font name="System Bold" size="13.0"/>
+      </font>
+    </Label>
+    <Label fx:id="osVersion" layoutX="227.0" layoutY="35.0"
+      text="Label"/>
+    <Label fx:id="jvmVersion" layoutX="110.0" layoutY="57.0"
+      text="Label"/>
+    <Label fx:id="springBootVersion" layoutX="169.0" layoutY="79.0"
+      text="Label"/>
+  </Pane>
 
-	<Button fx:id="closeButton" mnemonicParsing="false" text="Close" />
-	<padding>
-		<Insets bottom="10.0" />
-	</padding>
+  <Button fx:id="closeButton" mnemonicParsing="false" text="Close"/>
+  <padding>
+    <Insets bottom="10.0"/>
+  </padding>
 </VBox>

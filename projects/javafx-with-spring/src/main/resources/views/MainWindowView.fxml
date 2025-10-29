@@ -28,41 +28,30 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
 <VBox prefHeight="400" prefWidth="600"
-	xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.gusrubin.lab.javafxwithspring.application.gui.controllers.MainWindowController">
-	<children>
-		<MenuBar VBox.vgrow="NEVER">
-			<menus>
-				<Menu mnemonicParsing="false" text="File">
-					<items>
-						<MenuItem mnemonicParsing="false"
-							onAction="#handleMenuOpenSystemInfoAction" text="System Info" />
-						<MenuItem mnemonicParsing="false"
-							onAction="#handleMenuOpenPersistenceSceneAction"
-							text="Persistence Example" />
-						<MenuItem mnemonicParsing="false"
-							onAction="#handleMenuCloseAction" text="Quit" />
-					</items>
-				</Menu>
-			</menus>
-		</MenuBar>
-		<AnchorPane VBox.vgrow="ALWAYS"
-			xmlns:fx="http://javafx.com/fxml">
-			<children>
-				<AnchorPane fx:id="mainPane" VBox.vgrow="ALWAYS"
-					xmlns:fx="http://javafx.com/fxml">
-					<children>
-						<Label fx:id="mainPaneLabel" AnchorPane.leftAnchor="200"
-							AnchorPane.topAnchor="150" />
-					</children>
-				</AnchorPane>
-				<fx:include fx:id="systemInfoPane"
-					source="SystemInfoView.fxml" />
-				<fx:include fx:id="persistenceExamplePane"
-					source="PersistenceExampleView.fxml" />
-			</children>
-		</AnchorPane>
-	</children>
+  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.controllers.MainWindowController">
+  <MenuBar VBox.vgrow="NEVER">
+    <Menu mnemonicParsing="false" text="File">
+      <MenuItem mnemonicParsing="false"
+        onAction="#handleMenuOpenSystemInfoAction" text="System Info"/>
+      <MenuItem mnemonicParsing="false"
+        onAction="#handleMenuOpenPersistenceSceneAction"
+        text="Persistence Example"/>
+      <MenuItem mnemonicParsing="false"
+        onAction="#handleMenuCloseAction" text="Quit"/>
+    </Menu>
+  </MenuBar>
+  <AnchorPane VBox.vgrow="ALWAYS"
+    xmlns:fx="http://javafx.com/fxml">
+    <AnchorPane fx:id="mainPane" VBox.vgrow="ALWAYS"
+      xmlns:fx="http://javafx.com/fxml">
+      <Label fx:id="mainPaneLabel" AnchorPane.leftAnchor="200"
+        AnchorPane.topAnchor="150"/>
+    </AnchorPane>
+    <fx:include fx:id="systemInfoPane"
+      source="SystemInfoView.fxml"/>
+    <fx:include fx:id="persistenceExamplePane"
+      source="PersistenceExampleView.fxml"/>
+  </AnchorPane>
 </VBox>

@@ -1,8 +1,9 @@
-package com.gusrubin.lab.javafxwithspring.application.gui;
+package com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui;
 
 import com.gusrubin.lab.javafxwithspring.JavafxWithSpringApplication;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.application.Platform;
@@ -72,18 +73,18 @@ public class JavaFxApplication extends Application {
     try {
       URL fxmlURL = getClass().getResource("/views/SplashScreenView.fxml");
 
-      root = FXMLLoader.load(fxmlURL);
-
       if (fxmlURL == null) {
         throw new IOException("SplashScreenView.fxml not found");
       }
+
+      root = FXMLLoader.load(fxmlURL);
 
     } catch (IOException e) {
       e.printStackTrace();
     }
 
     primaryStage.setTitle("JavaFX Hello World");
-    Image icon = new Image(getClass().getResourceAsStream("/icon.png"));
+    Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/icon.png")));
     primaryStage.getIcons().addAll(icon);
     primaryStage.alwaysOnTopProperty();
     primaryStage.centerOnScreen();

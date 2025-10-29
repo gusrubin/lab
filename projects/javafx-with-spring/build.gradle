@@ -1,9 +1,10 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.springframework.boot' version '3.5.6'
+    id 'org.springframework.boot' version '3.5.7'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'com.github.ben-manes.versions' version '0.53.0'
 }
 
 group = 'com.gusrubin.lab'
@@ -49,7 +50,7 @@ javafx {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.gusrubin.lab.javafxwithspring.application.gui.JavaFxApplication'
+    mainClass = 'com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.JavaFxApplication'
 
     applicationDefaultJvmArgs = ['--add-exports=javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED',
                                  '--add-exports=javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED',
@@ -58,8 +59,47 @@ application {
     ]
 }
 
+tasks.register('gerarAtalho') {
+    description = 'Gera um atalho .desktop para o aplicativo'
+
+    // Diretório linux no build
+    def linuxDir = layout.buildDirectory.dir("linux")
+
+    // Arquivo desktop como provider
+    def desktopFile = linuxDir.map { it.file("meuapp.desktop") }
+
+    // Paths absolutos capturados em tempo de configuração
+    def iconPath = layout.buildDirectory.file("resources/main/static/icon.png").get().asFile.toPath().toAbsolutePath().toString()
+    def jarPath = layout.buildDirectory.file("libs/${project.name}-${project.version}.jar").get().asFile.toPath().toAbsolutePath().toString()
+
+
+    doLast {
+        // Cria o diretorio
+        desktopFile.get().asFile.parentFile.mkdirs()
+
+        // Conteúdo do atalho
+        def conteudo = """[Desktop Entry]
+Type=Application
+Name=MeuApp JavaFX
+Comment=Aplicativo Spring Boot JavaFX
+Exec=java -jar '${jarPath}'
+Icon=${iconPath}
+Terminal=false
+Categories=Development;Utility;
+"""
+        desktopFile.get().asFile.text = conteudo
+
+        println "Atalho gerado em: ${desktopFile.get().asFile}"
+    }
+}
+
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.named('build') {
+    // println "Gerando atalho"
+    finalizedBy tasks.named('gerarAtalho')
 }
 
 run {
@@ -69,3 +109,16 @@ run {
                '--add-exports=javafx.graphics/com.sun.glass.ui=ALL-UNNAMED',
     ]
 }
+
+dependencyUpdates {
+    rejectVersionIf {
+        isNonStable(candidate.version) && !isNonStable(currentVersion)
+    }
+}
+
+static boolean isNonStable(String version) {
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+

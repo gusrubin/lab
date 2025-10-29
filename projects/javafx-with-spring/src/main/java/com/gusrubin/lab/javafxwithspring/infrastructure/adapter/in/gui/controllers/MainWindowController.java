@@ -1,6 +1,4 @@
-package com.gusrubin.lab.javafxwithspring.application.gui.controllers;
-
-import org.springframework.stereotype.Component;
+package com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +8,7 @@ import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.rgielen.fxweaver.core.FxmlView;
+import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component

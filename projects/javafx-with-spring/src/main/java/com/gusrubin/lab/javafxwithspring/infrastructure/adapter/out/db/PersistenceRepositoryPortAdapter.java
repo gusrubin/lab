@@ -1,6 +1,6 @@
-package com.gusrubin.lab.javafxwithspring.infrastructure.adapters;
+package com.gusrubin.lab.javafxwithspring.infrastructure.adapter.out.db;
 
-import com.gusrubin.lab.javafxwithspring.domain.persistence.PersistenceRepositoryPort;
+import com.gusrubin.lab.javafxwithspring.application.port.out.PersistenceRepositoryPort;
 import com.gusrubin.lab.javafxwithspring.domain.persistence.WordRecord;
 import com.gusrubin.lab.javafxwithspring.infrastructure.database.entities.WordRecordEntity;
 import com.gusrubin.lab.javafxwithspring.infrastructure.database.mapper.WordRecordEntityMapper;
@@ -36,7 +36,6 @@ public class PersistenceRepositoryPortAdapter implements PersistenceRepositoryPo
   @Override
   public List<WordRecord> findByFilter(String filter) {
     Specification<WordRecordEntity> spec = containsTextInWord(filter);
-
     return wordRecordRepository.findAll(spec).stream().map(this::toDomain).toList();
   }
 

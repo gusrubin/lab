@@ -12,3 +12,11 @@ These additional references should also help you:
 
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
+### Próximos Passos:
+- [x] Ajustar à estrutura hexagonal correta
+- [ ] Tornar domínio rico ao invés de anemico
+- [ ] Documentar com javadoc todas as classes e conceitos
+
+### Desenvolvimento e Manutenção
+
+* Verificar atualizações de dependências através do comando ```./gradlew dependencyUpdates```
