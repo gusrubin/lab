@@ -16,6 +16,7 @@ These additional references should also help you:
 - [x] Ajustar à estrutura hexagonal correta
 - [x] Tornar domínio rico ao invés de anemico
 - [x] Implementar painel de exemplo de consulta à API externa
+- [x] Mostrar a versão do app que está no build.gradle
 - [ ] Documentar com javadoc todas as classes e conceitos
 
 ### Desenvolvimento e Manutenção

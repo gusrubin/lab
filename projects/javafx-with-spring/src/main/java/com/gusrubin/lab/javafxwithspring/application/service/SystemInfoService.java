@@ -4,8 +4,10 @@ import com.gusrubin.lab.javafxwithspring.application.port.in.GetSystemInfoUseCas
 import com.gusrubin.lab.javafxwithspring.application.port.out.SystemInfoPort;
 import com.gusrubin.lab.javafxwithspring.domain.systeminfo.SystemInfo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class SystemInfoService implements GetSystemInfoUseCase {
@@ -16,10 +18,12 @@ public class SystemInfoService implements GetSystemInfoUseCase {
   public SystemInfo get() {
     return SystemInfo.builder()
         // @formatter:off
+        .applicationVersion(systemInfoPort.getApplicationVersion())
+        .springBootVersion(systemInfoPort.getSpringBootVersion())
+        .jvmVersion(systemInfoPort.getJavaVersion())
+        .javafxVersion(systemInfoPort.getJavaFxVersion())
         .operationSystemName(systemInfoPort.getOperationalSystemName())
         .operationSystemVersion(systemInfoPort.getOperationalSystemVersion())
-        .jvmVersion(systemInfoPort.getJavaVersion())
-        .springBootVersion(systemInfoPort.getSpringBootVersion())
         .build();
     // @formatter:on
   }

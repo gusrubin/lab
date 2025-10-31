@@ -23,11 +23,15 @@ public class SystemInfoDialogController {
 
   @FXML private VBox dialog;
 
-  @FXML private Label osVersion;
+  @FXML private Label applicationVersion;
+
+  @FXML private Label springBootVersion;
+
+  @FXML private Label javaFxVersion;
 
   @FXML private Label jvmVersion;
 
-  @FXML private Label springBootVersion;
+  @FXML private Label osVersion;
 
   @FXML private Button closeButton;
 
@@ -40,12 +44,14 @@ public class SystemInfoDialogController {
     this.stage.initModality(Modality.APPLICATION_MODAL);
     this.stage.setScene(new Scene(dialog));
 
+    this.applicationVersion.setText(this.getSystemInfoUseCase.get().getApplicationVersion());
+    this.springBootVersion.setText(this.getSystemInfoUseCase.get().getSpringBootVersion());
+    this.javaFxVersion.setText(this.getSystemInfoUseCase.get().getJavafxVersion());
+    this.jvmVersion.setText(this.getSystemInfoUseCase.get().getJvmVersion());
     this.osVersion.setText(
         this.getSystemInfoUseCase.get().getOperationSystemName()
             + " "
             + this.getSystemInfoUseCase.get().getOperationSystemVersion());
-    this.jvmVersion.setText(this.getSystemInfoUseCase.get().getJvmVersion());
-    this.springBootVersion.setText(this.getSystemInfoUseCase.get().getSpringBootVersion());
 
     this.closeButton.setOnAction(actionEvent -> stage.close());
   }

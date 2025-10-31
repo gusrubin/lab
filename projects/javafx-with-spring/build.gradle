@@ -10,6 +10,10 @@ plugins {
 group = 'com.gusrubin.lab'
 version = '1.0.0-SNAPSHOT'
 
+springBoot {
+    buildInfo()
+}
+
 java {
     sourceCompatibility = '21'
 }

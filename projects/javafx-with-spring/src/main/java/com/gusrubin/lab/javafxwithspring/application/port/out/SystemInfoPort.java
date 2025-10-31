@@ -5,11 +5,15 @@ package com.gusrubin.lab.javafxwithspring.application.port.out;
  */
 public interface SystemInfoPort {
 
-  String getOperationalSystemName();
+  String getApplicationVersion();
 
-  String getOperationalSystemVersion();
+  String getSpringBootVersion();
+
+  String getJavaFxVersion();
 
   String getJavaVersion();
 
-  String getSpringBootVersion();
+  String getOperationalSystemName();
+
+  String getOperationalSystemVersion();
 }

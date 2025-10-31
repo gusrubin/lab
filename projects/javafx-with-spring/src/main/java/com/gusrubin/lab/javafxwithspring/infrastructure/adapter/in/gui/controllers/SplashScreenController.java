@@ -1,5 +1,6 @@
 package com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.controllers;
 
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -17,8 +18,9 @@ public class SplashScreenController {
   public void initialize() {
     this.splashLabel.setText("Hello World JavaFX Application");
     this.splashStartingLabel.setText("Starting...");
-    String javaVersion = System.getProperty("java.version");
-    String javafxVersion = System.getProperty("javafx.version");
-    splashSystemInfoLabel.setText("JavaFX " + javafxVersion + " running on JVM " + javaVersion);
+    String applicationVersion =
+        Optional.ofNullable(getClass().getPackage().getImplementationVersion())
+            .orElse("It can only get when running from JAR");
+    splashSystemInfoLabel.setText("Version " + applicationVersion);
   }
 }
