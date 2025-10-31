@@ -43,7 +43,7 @@ public class PersistenceService implements PersistenceUseCase {
   }
 
   @Override
-  public WordRecord put(Long id, WordRecordUpdateDto wordRecordUpdateDto) {
+  public WordRecord putById(Long id, WordRecordUpdateDto wordRecordUpdateDto) {
     var wordRecord = getById(id);
     wordRecord.update(wordRecordUpdateDto);
 
@@ -51,7 +51,7 @@ public class PersistenceService implements PersistenceUseCase {
   }
 
   @Override
-  public void delete(Long id) {
+  public void deleteById(Long id) {
     getById(id);
     persistenceRepositoryPort.delete(id);
   }

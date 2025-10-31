@@ -73,7 +73,7 @@ public class PersistenceExampleController {
 
     if (newWord != null) {
       WordRecord selectedItem = this.wordList.getSelectionModel().getSelectedItem();
-      this.persistenceUseCase.put(selectedItem.getId(), new WordRecordUpdateDto(newWord));
+      this.persistenceUseCase.putById(selectedItem.getId(), new WordRecordUpdateDto(newWord));
 
       var indexOfSelectedItem = this.wordList.getItems().indexOf(selectedItem);
       this.wordList.getItems().get(indexOfSelectedItem).update(new WordRecordUpdateDto(newWord));
@@ -84,7 +84,7 @@ public class PersistenceExampleController {
   private void deleteWord() {
     WordRecord selectedItem = this.wordList.getSelectionModel().getSelectedItem();
     if (selectedItem != null) {
-      this.persistenceUseCase.delete(selectedItem.getId());
+      this.persistenceUseCase.deleteById(selectedItem.getId());
       this.wordList.getItems().remove(selectedItem);
     }
   }

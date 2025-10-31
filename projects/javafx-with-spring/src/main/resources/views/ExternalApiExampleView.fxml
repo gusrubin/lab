@@ -22,28 +22,14 @@
 	NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
 	EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.controllers.MainWindowController">
-  <MenuBar VBox.vgrow="NEVER">
-    <Menu mnemonicParsing="false" text="File">
-      <MenuItem mnemonicParsing="false" onAction="#handleMenuOpenSystemInfoAction" text="System Info" />
-      <MenuItem mnemonicParsing="false" onAction="#handleMenuOpenPersistenceSceneAction" text="Persistence Example" />
-         <MenuItem mnemonicParsing="false" onAction="#handleMenuOpenExternalApiSceneAction" text="External API Example" />
-      <MenuItem mnemonicParsing="false" onAction="#handleMenuCloseAction" text="Quit" />
-    </Menu>
-  </MenuBar>
-  <AnchorPane VBox.vgrow="ALWAYS" xmlns:fx="http://javafx.com/fxml">
-    <AnchorPane fx:id="mainPane" VBox.vgrow="ALWAYS" xmlns:fx="http://javafx.com/fxml">
-      <Label fx:id="mainPaneLabel" AnchorPane.leftAnchor="200" AnchorPane.topAnchor="150" />
-    </AnchorPane>
-    <fx:include fx:id="systemInfoPane" source="SystemInfoView.fxml" />
-    <fx:include fx:id="persistenceExamplePane" source="PersistenceExampleView.fxml" />
-      <fx:include fx:id="externalApiExamplePane" source="ExternalApiExampleView.fxml" />
-  </AnchorPane>
-</VBox>
+<AnchorPane fx:id="externalApiExamplePane" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gusrubin.lab.javafxwithspring.infrastructure.adapter.in.gui.controllers.ExternalApiExampleController">
+  <Label text="External API Example" AnchorPane.leftAnchor="240" AnchorPane.topAnchor="20" />
+  <ListView fx:id="exampleResourceList" layoutX="58.0" layoutY="70.0" prefHeight="272.0" prefWidth="460.0" />
+  <Button fx:id="getButton" layoutX="529.0" layoutY="70.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="61.0" text="Get" />
+   <Button fx:id="clearLogButton" layoutX="529.0" layoutY="104.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="Clear Log" />
+</AnchorPane>

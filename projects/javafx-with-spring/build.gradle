@@ -18,6 +18,10 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
 }
 
 repositories {
@@ -29,6 +33,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.mapstruct:mapstruct:1.6.3'
     implementation 'org.flywaydb:flyway-core'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'net.rgielen:javafx-weaver-spring-boot-starter:2.0.1'
     implementation 'org.openjfx:javafx-controls:23.0.2'
     implementation 'org.openjfx:javafx-graphics:23.0.2'
@@ -41,6 +46,8 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.wiremock:wiremock-standalone:3.13.1'
+    implementation 'org.assertj:assertj-core:3.24.2'
 }
 
 javafx {

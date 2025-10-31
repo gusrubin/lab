@@ -14,7 +14,8 @@ These additional references should also help you:
 
 ### Próximos Passos:
 - [x] Ajustar à estrutura hexagonal correta
-- [ ] Tornar domínio rico ao invés de anemico
+- [x] Tornar domínio rico ao invés de anemico
+- [x] Implementar painel de exemplo de consulta à API externa
 - [ ] Documentar com javadoc todas as classes e conceitos
 
 ### Desenvolvimento e Manutenção

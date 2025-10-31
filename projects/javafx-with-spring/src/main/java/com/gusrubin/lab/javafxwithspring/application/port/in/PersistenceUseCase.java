@@ -15,7 +15,7 @@ public interface PersistenceUseCase {
 
   List<WordRecord> getByFilter(String filter);
 
-  WordRecord put(Long id, WordRecordUpdateDto wordRecordUpdateDto);
+  WordRecord putById(Long id, WordRecordUpdateDto wordRecordUpdateDto);
 
-  void delete(Long id);
+  void deleteById(Long id);
 }

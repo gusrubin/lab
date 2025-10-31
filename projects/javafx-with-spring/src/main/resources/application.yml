@@ -32,4 +32,8 @@ logging:
     '[com.zaxxer.hikari]': info
     '[org.hibernate]': info
     '[com.gusrubin.lab.javafxwithspring]': debug
+
+app:
+  external-service:
+    base-url: http://localhost:8089/
     

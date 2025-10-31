@@ -16,48 +16,56 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class MainWindowController {
 
-    @FXML
-    private AnchorPane mainPane;
+  @FXML private AnchorPane mainPane;
 
-    @FXML
-    private Label mainPaneLabel;
+  @FXML private Label mainPaneLabel;
 
-    @FXML
-    private AnchorPane systemInfoPane;
+  @FXML private AnchorPane systemInfoPane;
 
-    @FXML
-    private AnchorPane persistenceExamplePane;
+  @FXML private AnchorPane persistenceExamplePane;
 
-    @FXML
-    public void initialize() {
-	log.debug("initialize MainController");
-	this.mainPane.setVisible(true);
-	this.mainPaneLabel.setText("JavaFX with Spring Boot - Hello World");
-	this.systemInfoPane.setVisible(false);
-	this.persistenceExamplePane.setVisible(false);
-    }
+  @FXML private AnchorPane externalApiExamplePane;
 
-    @FXML
-    private void handleMenuOpenSystemInfoAction(ActionEvent event) {
-	this.mainPane.setVisible(false);
-	this.systemInfoPane.setVisible(true);
-	this.persistenceExamplePane.setVisible(false);
-    }
+  @FXML
+  public void initialize() {
+    log.debug("initialize MainController");
+    this.mainPane.setVisible(true);
+    this.mainPaneLabel.setText("JavaFX with Spring Boot - Hello World");
+    this.systemInfoPane.setVisible(false);
+    this.persistenceExamplePane.setVisible(false);
+    this.externalApiExamplePane.setVisible(false);
+  }
 
-    @FXML
-    private void handleMenuOpenPersistenceSceneAction(ActionEvent event) {
-	this.mainPane.setVisible(false);
-	this.systemInfoPane.setVisible(false);
-	this.persistenceExamplePane.setVisible(true);
-    }
+  @FXML
+  private void handleMenuOpenSystemInfoAction(ActionEvent event) {
+    this.mainPane.setVisible(false);
+    this.systemInfoPane.setVisible(true);
+    this.persistenceExamplePane.setVisible(false);
+    this.externalApiExamplePane.setVisible(false);
+  }
 
-    @FXML
-    private void handleMenuCloseAction(ActionEvent event) {
-	getStage().close();
-    }
+  @FXML
+  private void handleMenuOpenPersistenceSceneAction(ActionEvent event) {
+    this.mainPane.setVisible(false);
+    this.systemInfoPane.setVisible(false);
+    this.persistenceExamplePane.setVisible(true);
+    this.externalApiExamplePane.setVisible(false);
+  }
 
-    private Stage getStage() {
-	return (Stage) systemInfoPane.getScene().getWindow();
-    }
+  @FXML
+  private void handleMenuOpenExternalApiSceneAction(ActionEvent event) {
+    this.mainPane.setVisible(false);
+    this.systemInfoPane.setVisible(false);
+    this.persistenceExamplePane.setVisible(false);
+    this.externalApiExamplePane.setVisible(true);
+  }
 
+  @FXML
+  private void handleMenuCloseAction(ActionEvent event) {
+    getStage().close();
+  }
+
+  private Stage getStage() {
+    return (Stage) systemInfoPane.getScene().getWindow();
+  }
 }
