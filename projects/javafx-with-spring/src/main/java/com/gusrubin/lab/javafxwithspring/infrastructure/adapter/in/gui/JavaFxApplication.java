@@ -35,36 +35,34 @@ public class JavaFxApplication extends Application {
     log.info("Show splash screen");
     showSplashScreen(primaryStage);
 
-    new Thread(
-            () -> {
-              try {
-                Thread.sleep(500);
+    Thread.startVirtualThread(
+        () -> {
+          try {
+            Thread.sleep(1);
 
-                Platform.runLater(
-                    () -> {
-                      try {
-                        initSpringContext();
+            Platform.runLater(
+                () -> {
+                  try {
+                    initSpringContext();
 
-                        GlobalExceptionHandler.setupGlobalExceptionHandler(primaryStage);
+                    GlobalExceptionHandler.setupGlobalExceptionHandler(primaryStage);
 
-                        log.info("Show main window");
-                        springApplicationContext.publishEvent(
-                            new PrimaryStageReadyEvent(primaryStage));
+                    log.info("Show main window");
+                    springApplicationContext.publishEvent(new PrimaryStageReadyEvent(primaryStage));
 
-                        log.info("Close splash screen");
-                        primaryStage.close();
+                    log.info("Close splash screen");
+                    primaryStage.close();
 
-                      } catch (Exception e) {
-                        log.error("Failed to load application. {}", e.getMessage());
-                      }
-                    });
+                  } catch (Exception e) {
+                    log.error("Failed to load application. {}", e.getMessage());
+                  }
+                });
 
-              } catch (InterruptedException e) {
-                log.error("Failed to load application. {}", e.getMessage());
-                Thread.currentThread().interrupt();
-              }
-            })
-        .start();
+          } catch (InterruptedException e) {
+            log.error("Failed to load application. {}", e.getMessage());
+            Thread.currentThread().interrupt();
+          }
+        });
   }
 
   private void showSplashScreen(Stage primaryStage) {
